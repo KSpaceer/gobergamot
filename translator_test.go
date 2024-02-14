@@ -4,9 +4,7 @@ import (
 	"bytes"
 	"context"
 	_ "embed"
-	"encoding/base64"
 	"io"
-	"os"
 	"testing"
 
 	"github.com/tetratelabs/wazero"
@@ -15,14 +13,7 @@ import (
 	"github.com/KSpaceer/gobergamot/internal/wasm"
 )
 
-const (
-	testModelPath     = "testdata/model.enru.intgemm.alphas.bin"
-	testShortlistPath = "testdata/lex.50.50.enru.s2t.bin"
-	testVocabPath     = "testdata/vocab.enru.spm"
-)
-
 func TestTranslator_New(t *testing.T) {
-	base64.StdEncoding.EncodeToString()
 	ctx := context.Background()
 	cache := wazero.NewCompilationCache()
 	tests := []struct {
@@ -202,12 +193,21 @@ func TestTranslator_Translate(t *testing.T) {
 	}
 }
 
+//go:embed testdata/model.enru.intgemm.alphas.bin
+var testModel []byte
+
+//go:embed testdata/lex.50.50.enru.s2t.bin
+var testShortlist []byte
+
+//go:embed testdata/vocab.enru.spm
+var testVocabulary []byte
+
 func testBundle(t *testing.T) gobergamot.FilesBundle {
 	t.Helper()
 	return gobergamot.FilesBundle{
-		Model:            mustOpenFile(t, testModelPath),
-		LexicalShortlist: mustOpenFile(t, testShortlistPath),
-		Vocabulary:       mustOpenFile(t, testVocabPath),
+		Model:            bytes.NewBuffer(testModel),
+		LexicalShortlist: bytes.NewBuffer(testShortlist),
+		Vocabulary:       bytes.NewBuffer(testVocabulary),
 	}
 }
 
@@ -226,16 +226,4 @@ type readerWrapper struct {
 
 func (r readerWrapper) Read(p []byte) (n int, err error) {
 	return r.r.Read(p)
-}
-
-func mustOpenFile(t *testing.T, path string) *os.File {
-	t.Helper()
-	f, err := os.Open(path)
-	if err != nil {
-		panic(err)
-	}
-	t.Cleanup(func() {
-		f.Close()
-	})
-	return f
 }
