@@ -1,4 +1,4 @@
-# gobergamot
+# gobergamot [![Go Report Card](https://goreportcard.com/badge/github.com/KSpaceer/gobergamot)](https://goreportcard.com/report/github.com/KSpaceer/gobergamot) [![Go Reference](https://pkg.go.dev/badge/github.com/KSpaceer/gobergamot.svg)](https://pkg.go.dev/github.com/KSpaceer/gobergamot)
 
 Implementation of local text translator (for i18n) with [Bergamot Translator project](https://github.com/browsermt/bergamot-translator) compiled to WebAssembly with Emscripten via Wazero.
 
