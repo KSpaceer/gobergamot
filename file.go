@@ -40,6 +40,7 @@ func (f *alignedMemoryFile) size() (uint32, error) {
 		size = uint64(streamLen)
 	default:
 		// We have failed to avoid copying the data into memory to get the size...
+		// git commit sudoku
 		buf := new(bytes.Buffer)
 		bufLen, err := io.Copy(buf, reader)
 		if err != nil {

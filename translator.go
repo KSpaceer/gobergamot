@@ -14,9 +14,9 @@ import (
 	"github.com/tetratelabs/wazero/experimental"
 	"gopkg.in/yaml.v3"
 
-	"github.com/KSpaceeR/gobergamot/internal/errgroup"
-	"github.com/KSpaceeR/gobergamot/internal/gen"
-	"github.com/KSpaceeR/gobergamot/internal/wasm"
+	"github.com/KSpaceer/gobergamot/internal/errgroup"
+	"github.com/KSpaceer/gobergamot/internal/gen"
+	"github.com/KSpaceer/gobergamot/internal/wasm"
 )
 
 type FilesBundle struct {
@@ -49,7 +49,6 @@ type Config struct {
 	// https://marian-nmt.github.io/docs/cmd/marian-decoder/
 	BergamotOptions map[string]any
 
-	// WASMCache is optional parameter for more efficient running of many Translator instances.
 	WASMCache wazero.CompilationCache
 
 	// WASMUseContext defines if WASM functions execution must be canceled upon context.Context cancellation.

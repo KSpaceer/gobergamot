@@ -9,7 +9,7 @@ import (
 	"github.com/tetratelabs/wazero"
 	"github.com/tetratelabs/wazero/api"
 
-	"github.com/KSpaceeR/gobergamot/internal/gen"
+	"github.com/KSpaceer/gobergamot/internal/gen"
 )
 
 type CompileConfig struct {

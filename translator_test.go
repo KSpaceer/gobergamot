@@ -9,8 +9,8 @@ import (
 
 	"github.com/tetratelabs/wazero"
 
-	"github.com/KSpaceeR/gobergamot"
-	"github.com/KSpaceeR/gobergamot/internal/wasm"
+	"github.com/KSpaceer/gobergamot"
+	"github.com/KSpaceer/gobergamot/internal/wasm"
 )
 
 func TestTranslator_New(t *testing.T) {
