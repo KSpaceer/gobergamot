@@ -6,7 +6,7 @@ import (
 	"io"
 	"testing"
 
-	"github.com/KSpaceer/gobergamot/internal/errgroup"
+	"github.com/KSpaceeR/gobergamot/internal/errgroup"
 )
 
 func TestErrgroup(t *testing.T) {

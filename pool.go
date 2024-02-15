@@ -8,7 +8,7 @@ import (
 
 	"github.com/tetratelabs/wazero"
 
-	"github.com/KSpaceer/gobergamot/internal/errgroup"
+	"github.com/KSpaceeR/gobergamot/internal/errgroup"
 )
 
 var ErrClosed = errors.New("pool closed")
