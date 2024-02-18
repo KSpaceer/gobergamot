@@ -9,3 +9,8 @@ require (
 )
 
 require golang.org/x/text v0.14.0 // indirect
+
+retract (
+    v0.1.1 // contains invalid module name 
+    v0.1.2 // contains only retractions
+)
