@@ -49,6 +49,12 @@ handleError(err)
 handleError(pool.Close(ctx))
 ```
 
+## Installation
+
+Just run following command:
+
+```go get github.com/KSpaceer/gobergamot@latest```
+
 ## Where do I find files for models, shortlists and vocabularies?
 
 Files for many languages are available at [Firefox translation models](https://github.com/mozilla/firefox-translations-models).
