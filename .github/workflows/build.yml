@@ -1,0 +1,17 @@
+name: build
+
+on:
+  push:
+    branches: [main]
+  pull_request:
+    branches: [main]
+  schedule:
+    - cron: '0 0 * * 0' # run "At 00:00 on Sunday"
+
+# See https://github.com/franchb/.github-go/tree/main/.github/workflows
+jobs:
+  build:
+    uses: franchb/.github-go/.github/workflows/build.yml@v0.2.0
+
+  vuln:
+    uses: franchb/.github-go/.github/workflows/vuln.yml@v0.2.0
