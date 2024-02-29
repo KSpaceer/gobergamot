@@ -4,7 +4,7 @@ ROOT?=$(PWD)
 
 EMSDK_DIR=$(ROOT)/third_party/emsdk/upstream/emscripten
 
-DIST_TARGETS=dist/bergamot-translator-worker.wasm
+DIST_TARGETS=dist/bergamot-translator-worker.wasm dist/bergamot-translator-worker.debug.wasm
 
 .PHONY: lib
 lib: $(DIST_TARGETS)
@@ -55,9 +55,21 @@ build/bergamot.uptodate: third_party/bergamot build/emsdk.uptodate
 	(cd build/bergamot && $(EMSDK_DIR)/emmake make -j2)
 	touch build/bergamot.uptodate
 
+build/bergamot-debug.uptodate: third_party/bergamot build/emsdk.uptodate
+	mkdir -p build/bergamot-debug
+	(cd build/bergamot-debug && $(EMSDK_DIR)/emcmake cmake $(BERGAMOT_CMAKE_OPTIONS) -DCMAKE_BUILD_TYPE=Debug ../../third_party/bergamot)
+	(cd build/bergamot-debug && $(EMSDK_DIR)/emmake make -j2)
+	touch build/bergamot-debug.uptodate
+
 build/bergamot/bergamot-translator-worker.wasm: build/bergamot.uptodate
 
+build/bergamot-debug/bergamot-translator-worker.wasm: build/bergamot-debug.uptodate
+
 dist/bergamot-translator-worker.wasm: build/bergamot/bergamot-translator-worker.wasm
+	mkdir -p dist/
+	cp $< $@
+
+dist/bergamot-translator-worker.debug.wasm: build/bergamot-debug/bergamot-translator-worker.wasm
 	mkdir -p dist/
 	cp $< $@
 
