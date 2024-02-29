@@ -17,6 +17,10 @@ type CompileConfig struct {
 	Stderr, Stdout io.Writer
 }
 
+func BergamotWASM() []byte {
+	return bergamotTranslatorWorkerWASM
+}
+
 func CompileBergamot(
 	ctx context.Context,
 	wasmRuntime wazero.Runtime,

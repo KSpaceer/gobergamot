@@ -1,3 +1,4 @@
+//go:build !gobergamot_debug
 package wasm
 
 import (

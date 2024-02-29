@@ -1,3 +1,5 @@
 third_party/
 build/
 dist/
+# debug wasm binary maybe too large because of a lot of debug symbols
+internal/wasm/bergamot-translator-worker.debug.wasm 
