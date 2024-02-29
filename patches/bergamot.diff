@@ -1,8 +1,25 @@
 diff --git a/CMakeLists.txt b/CMakeLists.txt
-index d8a2d00..2d184f7 100644
+index d8a2d00..f450e1d 100644
 --- a/CMakeLists.txt
 +++ b/CMakeLists.txt
-@@ -142,7 +142,6 @@ if(COMPILE_WASM)
+@@ -123,6 +123,8 @@ if(COMPILE_WASM)
+     $<$<CONFIG:Release>:-g1>
+     # Relevant Debug info only for release with debug builds as this increases wasm binary size
+     $<$<CONFIG:RelWithDebInfo>:-g2>
++    # DWARF debug info to profile and debug the binary
++    $<$<CONFIG:Debug>:-g3>
+     -fPIC
+     -mssse3
+     -msimd128
+@@ -136,13 +138,14 @@ if(COMPILE_WASM)
+     $<$<CONFIG:Release>:-g1>
+     # Relevant Debug info only for release with debug builds as this increases wasm binary size
+     $<$<CONFIG:RelWithDebInfo>:-g2>
++    # DWARF debug info to profile and debug the binary
++    $<$<CONFIG:Debug>:-g3>
+     -lembind
+     # Save some code, and some speed
+     -sASSERTIONS=0
      -sDISABLE_EXCEPTION_CATCHING=1
      # the intgemm functions we call will be undefined since these are linked at
      # runtime by our own javascript.
@@ -10,7 +27,7 @@ index d8a2d00..2d184f7 100644
      -sERROR_ON_UNDEFINED_SYMBOLS=0
      # Cause we can!
      -sSTRICT=1
-@@ -156,13 +155,12 @@ if(COMPILE_WASM)
+@@ -156,13 +159,12 @@ if(COMPILE_WASM)
      # If you turn this on, it will mangle names which makes the dynamic linking hard.
      -sDECLARE_ASM_MODULE_EXPORTS=0
      # Export all of the intgemm functions in case we need to fall back to using the embedded intgemm

@@ -63,6 +63,11 @@ Files for many languages are available at [Firefox translation models](https://g
 
 There is a Makefile target for this - ```make recompile-bergamot```.
 
+## Debug build
+
+```recompile-bergamot``` compiles two versions of WebAssembly binaries - for release and debug. If you need to debug this library, you can put the debug binary into internal/wasm/bergamot-translator-worker.debug.wasm
+and run the library with ```gobergamot_debug``` build tag. 
+
 ## Gratitudes
 
 Thanks to [Bergamot Project](https://browser.mt/) for awesome idea of local translation.
