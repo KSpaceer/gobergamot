@@ -203,7 +203,9 @@ var testShortlist []byte
 var testVocabulary []byte
 
 func testBundle(t *testing.T) gobergamot.FilesBundle {
-	t.Helper()
+	if t != nil {
+		t.Helper()
+	}
 	return gobergamot.FilesBundle{
 		Model:            bytes.NewBuffer(testModel),
 		LexicalShortlist: bytes.NewBuffer(testShortlist),
