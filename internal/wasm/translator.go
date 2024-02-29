@@ -47,5 +47,4 @@ func CompileBergamot(
 	}
 
 	return bergamotModule, gen.Attach(embindEng)
-
 }
