@@ -4,7 +4,7 @@ go 1.22.0
 
 require (
 	github.com/jerbob92/wazero-emscripten-embind v1.5.0
-	github.com/tetratelabs/wazero v1.6.1-0.20240212014225-184a6a0d1ec0
+	github.com/tetratelabs/wazero v1.7.0
 	gopkg.in/yaml.v3 v3.0.1
 )
 
